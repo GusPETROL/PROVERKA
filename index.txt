@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Задать вопрос о кибербуллинге | Кибербезопасность детям</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e9f0fa 100%);
+            color: #1a2a3a;
+            line-height: 1.5;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            padding: 40px 32px 48px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #0a2b3e;
+            line-height: 1.2;
+        }
+
+        .subhead {
+            font-size: 18px;
+            color: #2c5a6e;
+            margin-bottom: 32px;
+            border-left: 4px solid #2c7da0;
+            padding-left: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1e4a6b;
+        }
+
+        .label-optional {
+            font-weight: normal;
+            font-size: 14px;
+            color: #6b7a8a;
+            margin-left: 8px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 20px;
+            font-family: inherit;
+            transition: all 0.2s;
+            background: #fefefe;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #2c7da0;
+            box-shadow: 0 0 0 3px rgba(44,125,160,0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        button {
+            background: #2c7da0;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+            margin-top: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        button:hover {
+            background: #1f5e7a;
+        }
+
+        .info-note {
+            font-size: 14px;
+            color: #5a6e7c;
+            text-align: center;
+            margin-top: 20px;
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 24px;
+        }
+
+        .faq {
+            margin-top: 48px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 32px;
+        }
+
+        .faq h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #0a2b3e;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 16px 20px;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            font-size: 17px;
+            color: #1e4a6b;
+            margin-bottom: 8px;
+        }
+
+        .faq-answer {
+            font-size: 15px;
+            color: #334e68;
+            line-height: 1.5;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .back-link a {
+            color: #2c7da0;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #2c7da0;
+        }
+
+        .success-message {
+            display: none;
+            background: #e0f2e9;
+            border-radius: 24px;
+            padding: 32px;
+            text-align: center;
+            color: #1e6f3f;
+            margin-bottom: 32px;
+        }
+
+        .success-message h2 {
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+
+        .error-message {
+            display: none;
+            background: #fee2e2;
+            border-radius: 20px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            color: #b91c1c;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 32px;
+            font-size: 13px;
+            color: #7f8c9a;
+        }
+
+        @media (max-width: 550px) {
+            .container {
+                padding: 28px 20px;
+            }
+            h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="app">
+    <h1>📬 Задать вопрос о кибербуллинге</h1>
+    <div class="subhead">
+        Ты не один. Задай вопрос — мы ответим. <br>
+        Анонимно или открыто — как тебе удобно.
+    </div>
+
+    <div id="errorBox" class="error-message"></div>
+    <div id="successBox" class="success-message">
+        <h2>✨ Спасибо за твой вопрос!</h2>
+        <p>Мы получили его и скоро ответим.<br>Если оставил(а) email — ответ придёт на почту.</p>
+        <p style="margin-top: 16px;">👉 <a href="https://kibergu.tilda.ws/1" style="color:#1e6f3f;">Вернуться на главную</a></p>
+    </div>
+
+    <form id="questionForm">
+        <div class="form-group">
+            <label>Как тебя зовут (по желанию) <span class="label-optional">— можно не указывать</span></label>
+            <input type="text" name="name" placeholder="Например: Саша, друг, родитель...">
+        </div>
+
+        <div class="form-group">
+            <label>Твой email (если хочешь получить ответ) <span class="label-optional">— необязательно</span></label>
+            <input type="email" name="email" placeholder="example@mail.ru">
+        </div>
+
+        <div class="form-group">
+            <label>Категория (чтобы нам было легче помочь)</label>
+            <select name="category">
+                <option value="Я хочу понять, это кибербуллинг или нет">❗ Я хочу понять, это кибербуллинг или нет</option>
+                <option value="Мне нужен совет, что делать">💡 Мне нужен совет, что делать</option>
+                <option value="Я хочу помочь другу">🤝 Я хочу помочь другу</option>
+                <option value="Я родитель / учитель">👪 Я родитель / учитель</option>
+                <option value="Другое">📌 Другое</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Твой вопрос <span style="color:#b91c1c;">*</span></label>
+            <textarea name="message" placeholder="Напиши здесь, что тебя беспокоит…" required></textarea>
+        </div>
+
+        <button type="submit">📩 Отправить вопрос</button>
+        <div class="info-note">
+            🔒 Вопрос придёт на почту автору сайта. Нигде публиковаться не будет.<br>
+            Если нужен срочный ответ — звони: <strong>8-800-2000-122</strong> (Детский телефон доверия)
+        </div>
+    </form>
+
+    <div class="faq">
+        <h3>❓ Часто задаваемые вопросы</h3>
+        <div class="faq-item">
+            <div class="faq-question">Мой вопрос увидят другие?</div>
+            <div class="faq-answer">Нет. Вопросы приходят только на почту автору сайта. Они не публикуются.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Что если я не хочу писать своё имя?</div>
+            <div class="faq-answer">Можно оставить поле «Имя» пустым. Анонимность сохраняется.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Как быстро мне ответят?</div>
+            <div class="faq-answer">Обычно в течение 1–2 дней. Если оставили email — ответ придёт туда.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Что делать, если нужна срочная помощь?</div>
+            <div class="faq-answer">Позвони на Детский телефон доверия: <strong>8-800-2000-122</strong>. Круглосуточно, бесплатно, анонимно.</div>
+        </div>
+    </div>
+
+    <div class="back-link">
+        <a href="https://kibergu.tilda.ws/1">← Вернуться на главную страницу</a>
+    </div>
+    <footer>
+        Проект «Кибербезопасность для детей и подростков» | Гусев Семён, группа ОИБАС-1625
+    </footer>
+</div>
+
+<script>
+    const form = document.getElementById('questionForm');
+    const successBox = document.getElementById('successBox');
+    const errorBox = document.getElementById('errorBox');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorBox.style.display = 'none';
+        errorBox.innerText = '';
+
+        const formData = new FormData(form);
+        const name = formData.get('name') || 'Аноним';
+        const email = formData.get('email') || '';
+        const category = formData.get('category');
+        const message = formData.get('message');
+
+        if (!message || message.trim() === '') {
+            errorBox.innerText = '❌ Пожалуйста, напишите ваш вопрос.';
+            errorBox.style.display = 'block';
+            return;
+        }
+
+        // Отправка через FormSubmit.co (бесплатно, не требует бэкенда)
+        const submitUrl = 'https://formsubmit.co/ajax/samgus6@mail.ru';
+
+        const payload = {
+            name: name,
+            email: email,
+            category: category,
+            message: message,
+            _subject: 'Новый вопрос с сайта о кибербезопасности',
+            _captcha: 'false'
+        };
+
+        try {
+            const response = await fetch(submitUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                form.style.display = 'none';
+                successBox.style.display = 'block';
+                // Дополнительно очищаем форму на случай, если она снова появится
+                form.reset();
+            } else {
+                throw new Error('Ошибка отправки');
+            }
+        } catch (err) {
+            errorBox.innerText = '⚠️ Не удалось отправить вопрос. Попробуй позже или напиши напрямую на samgus6@mail.ru';
+            errorBox.style.display = 'block';
+        }
+    });
+</script>
+</body>
+</html>
